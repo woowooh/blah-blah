@@ -1,0 +1,22 @@
+(define (cube-root-iter guess y)
+        (if (good-enough? guess y)
+            guess
+            (cube-root-iter (improve guess y)
+                            y)))
+
+(define (improve y x)
+    (/ 
+         (+ 
+             (/ x (* y y)) 
+         (* 2 y))
+       3)
+)
+(define (good-enough? guess y)
+        (if (< (abs (- (cube guess) y)) 0.001) #t #f))
+
+(define (cube x)
+        (* (* x x) x))
+
+(define (abs x)
+        (if (> x 0) x
+            (- x)))
